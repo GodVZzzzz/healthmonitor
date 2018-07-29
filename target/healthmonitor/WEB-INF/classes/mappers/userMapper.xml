@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.healthmonitor.dao.userMapper">
+  <resultMap id="BaseResultMap" type="com.healthmonitor.pojo.user">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="account" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="password" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="question" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="answer" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sex" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="age" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="tel" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="imageid" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="height" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="weight" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="heartrate" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="bloodpressure" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="step" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="sleep" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="creat_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, account, name, password, question, answer, sex, age, tel, email, imageid, height, 
+    weight, heartrate, bloodpressure, step, sleep, creat_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    *
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.healthmonitor.pojo.user">
+    insert into user (id, account, name, 
+      password, question, answer, 
+      sex, age, tel, email, 
+      imageid, height, weight, 
+      heartrate, bloodpressure, step, 
+      sleep, creat_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{question,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{age,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{imageid,jdbcType=VARCHAR}, #{height,jdbcType=DOUBLE}, #{weight,jdbcType=DOUBLE}, 
+      #{heartrate,jdbcType=INTEGER}, #{bloodpressure,jdbcType=INTEGER}, #{step,jdbcType=INTEGER}, 
+      #{sleep,jdbcType=INTEGER},now(), now()
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.healthmonitor.pojo.user">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="question != null">
+        question,
+      </if>
+      <if test="answer != null">
+        answer,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="imageid != null">
+        imageid,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="heartrate != null">
+        heartrate,
+      </if>
+      <if test="bloodpressure != null">
+        bloodpressure,
+      </if>
+      <if test="step != null">
+        step,
+      </if>
+      <if test="sleep != null">
+        sleep,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="imageid != null">
+        #{imageid,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="heartrate != null">
+        #{heartrate,jdbcType=INTEGER},
+      </if>
+      <if test="bloodpressure != null">
+        #{bloodpressure,jdbcType=INTEGER},
+      </if>
+      <if test="step != null">
+        #{step,jdbcType=INTEGER},
+      </if>
+      <if test="sleep != null">
+        #{sleep,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null">
+        now(),
+      </if>
+      <if test="updateTime != null">
+        now(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.healthmonitor.pojo.user">
+    update user
+    <set>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        question = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="imageid != null">
+        imageid = #{imageid,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="heartrate != null">
+        heartrate = #{heartrate,jdbcType=INTEGER},
+      </if>
+      <if test="bloodpressure != null">
+        bloodpressure = #{bloodpressure,jdbcType=INTEGER},
+      </if>
+      <if test="step != null">
+        step = #{step,jdbcType=INTEGER},
+      </if>
+      <if test="sleep != null">
+        sleep = #{sleep,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.healthmonitor.pojo.user">
+    update user
+    set account = #{account,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      question = #{question,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      age = #{age,jdbcType=INTEGER},
+      tel = #{tel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      imageid = #{imageid,jdbcType=VARCHAR},
+      height = #{height,jdbcType=DOUBLE},
+      weight = #{weight,jdbcType=DOUBLE},
+      heartrate = #{heartrate,jdbcType=INTEGER},
+      bloodpressure = #{bloodpressure,jdbcType=INTEGER},
+      step = #{step,jdbcType=INTEGER},
+      sleep = #{sleep,jdbcType=INTEGER},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="checkUserAccount" resultType="int" parameterType="string" >
+    select count(1) from user
+    where account = #{account}
+  </select>
+
+  <select id="selectLogin" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where account = #{account}
+    and password = #{password}
+  </select>
+
+  <select id="selectQuestionByAccount" parameterType="String" resultType="String">
+    select question from user where account = #{account}
+  </select>
+
+  <select id="checkAnswer" parameterType="map" resultType="int">
+    select count(1) from user where account = #{account}
+    and question = #{question} and answer = #{answer}
+  </select>
+
+  <update id="updatePasswordByAccount" parameterType="map">
+    UPDATE user SET password = #{passwordNew},update_time = now() WHERE account = #{account}
+  </update>
+
+  <select id="checkPassword" parameterType="map" resultType="int">
+    SELECT count(1) FROM user WHERE id = #{id} AND password = #{password}
+  </select>
+
+</mapper>
